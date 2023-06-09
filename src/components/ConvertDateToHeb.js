@@ -7,26 +7,22 @@ const ConvertDateToHebrew = () => {
   const [DateHebrew, setDateHebrew] = useState("");
   const [loading, setIsLoading] = useState(false);
   const dateInput = useRef()
-
-const padTo2Digits = (num)=> {
-  return num.toString().padStart(2, '0');
-}
+//**change the date format to fit axios request */
 const formatDate = (date = new Date()) => {
   return [
     date.getFullYear(),
-    padTo2Digits(date.getMonth() + 1),
-    padTo2Digits(date.getDate()),
+    (date.getMonth() + 1).toString().padStart(2, '0'),
+    date.getDate().toString().padStart(2, '0'),
   ].join('-');
 }
 dateInput.value = formatDate();
 
-// console.log(formatDate());
-
 const [DateGregorian, setDateGregorian] = useState(dateInput.value); 
 useEffect(() => {
+  //set date to user corrent date at first launch
   Convert()
 }, []); 
-
+//**convert selected gregorian date to hebrew date using API*/
   const Convert = async () => {
     setIsLoading(true);
     console.log(DateGregorian)
