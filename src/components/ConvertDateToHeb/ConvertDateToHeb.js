@@ -16,20 +16,14 @@ const ConvertDateToHeb = () => {
   useEffect(() => {
     //set date to user corrent date at first launch
     Convert();
-  }, []);
+  },[]);
   //**convert selected gregorian date to hebrew date using API*/
   const Convert = async () => {
     setIsLoading(true);
     const dateArr = DateGregorian.split("-");
-    let url =
-      "converter?cfg=json&gy=" +
-      dateArr[0] +
-      "&gm=" +
-      dateArr[1] +
-      "&gd=" +
-      dateArr[2];
+    let url = `converter?cfg=json&gy=${dateArr[0]}&gm=${dateArr[1]}&gd=${dateArr[2]}`;
 
-    let { data } = await axios.get("https://www.hebcal.com/" + url);
+    let { data } = await axios.get(`https://www.hebcal.com/${url}`);
     setIsLoading(false);
     setDateHebrew(data.hebrew);
   };
