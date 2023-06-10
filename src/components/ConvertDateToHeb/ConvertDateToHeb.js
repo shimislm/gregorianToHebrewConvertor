@@ -7,7 +7,6 @@ import { formatDate } from "../../services/services";
 
 const ConvertDateToHeb = () => {
   const [DateHebrew, setDateHebrew] = useState("");
-
   const [loading, setIsLoading] = useState(false);
 
   //**change the date format to fit axios request and set it to default date */
@@ -20,6 +19,7 @@ const ConvertDateToHeb = () => {
   //**convert selected gregorian date to hebrew date using API*/
   const Convert = async () => {
     setIsLoading(true);
+    // split date to fit axios request format
     const dateArr = DateGregorian.split("-");
     let url = `converter?cfg=json&gy=${dateArr[0]}&gm=${dateArr[1]}&gd=${dateArr[2]}`;
 
@@ -29,12 +29,15 @@ const ConvertDateToHeb = () => {
   };
   return (
     <div className=" d-flex flex-column h-100 p-2 mt-5 rounded-4 align-items-center justify-center">
+      {/* header */}
       <h1 className="header text-center display-1">Pick the date</h1>
+      {/* input */}
       <div className="form-control input-group mt-2 border-info d-flex flex-column align-items-center">
         <div className="mb-3 bg-info">
           <DateSelction setDateGregorian={setDateGregorian} />
         </div>
         <Button Convert={Convert} loading={loading} />
+        {/* output */}
       </div>
       <HebrewDate DateHebrew={DateHebrew} />
     </div>
