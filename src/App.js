@@ -1,6 +1,7 @@
 
 import "./App.css";
-import ConvertDateToHebrew from "./components/ConvertDateToHeb";
+import ConvertDateToHebrew from './components/ConvertDate/ConvertDateToHeb';
+
 
 function App() {
   return (
