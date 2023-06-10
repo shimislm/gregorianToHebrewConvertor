@@ -1,3 +1,4 @@
+  //**change the date format to fit axios request */
 export const formatDate = (date = new Date()) => {
     return [
       date.getFullYear(),

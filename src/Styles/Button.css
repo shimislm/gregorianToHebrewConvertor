@@ -1,0 +1,11 @@
+button {
+  display: flex;
+  justify-content: center;
+  padding: 8px 24px;
+  font-size: 1em;
+  background-color: #2d80c9;
+  color: white;
+  cursor: pointer;
+  transition: 500ms;
+  min-width: 300px;
+}
